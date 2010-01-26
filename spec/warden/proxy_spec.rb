@@ -414,7 +414,7 @@ describe Warden::Proxy do
         [200, {"Content-Type" => "text/plain"}, [e['warden'].message]]
       end
       app = lambda do |e|
-        e['warden'].authenticate! :pass
+        e['warden'].authenticate! :pass_with_message
         success.call(e)
       end
       result = setup_rack(app).call(env_with_params)
